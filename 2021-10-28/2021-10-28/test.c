@@ -45,39 +45,39 @@
 
 //void* memmove(void* dest, const void* src, size_t count);
 
-//void* my_memmove(void* dest, const void* src, size_t count) {
-//	assert(dest != NULL);
-//	assert(src != NULL);
-//	assert(count != 0);
-//	char* pdest = (char*)dest;
-//	char* psrc = (char*)src;
-//	if (pdest > psrc && pdest < psrc + count)
-//	{
-//		// 内存重叠
-//		while (count > 0) {
-//			pdest[count] = psrc[count];
-//			count--;
-//		}
-//	}
-//	else {
-//		// 未重叠
-//		int i = 0;
-//		while (count > 0) {
-//			pdest[i] = psrc[i];
-//			count--;
-//			i++;
-//		}
-//	}
-//	return dest;
-//}
-//
-//int main() {
-//	char arr[100] = "abc";
-//	char arr2[100] = "hello";
-//	my_memmove(arr, arr2, 6);
-//	printf("%s\n", arr);
-//	return 0;
-//}
+void* my_memmove(void* dest, const void* src, size_t count) {
+	assert(dest != NULL);
+	assert(src != NULL);
+	assert(count != 0);
+	char* pdest = (char*)dest;
+	char* psrc = (char*)src;
+	if (pdest > psrc && pdest < psrc + count)
+	{
+		// 内存重叠
+		while (count > 0) {
+			pdest[count] = psrc[count];
+			count--;
+		}
+	}
+	else {
+		// 未重叠
+		int i = 0;
+		while (count > 0) {
+			pdest[i] = psrc[i];
+			count--;
+			i++;
+		}
+	}
+	return dest;
+}
+
+int main() {
+	char arr[100] = "abc";
+	char arr2[100] = "hello";
+	my_memmove(arr, arr2, 6);
+	printf("%s\n", arr);
+	return 0;
+}
 
 
 //模拟实现memcpy
@@ -164,35 +164,35 @@
 
 
 //模拟实现strcmp
-int my_strcmp(const char* str1, const char* str2) {
-	assert(str1 != NULL);
-	assert(str2 != NULL);
-	while (*str1 != '\0' && *str2 != '\0') {
-		if (*str1 > *str2) {
-			return 1;
-		}
-		else if (*str1 < *str2) {
-			return -1;
-		}
-		else {
-			str1++;
-			str2++;
-		}
-	}
-	if (*str1 > *str2) {
-		return 1;
-	} 
-	else if (*str1 < *str2) {
-		return -1;
-	}
-	else {
-		return 0;
-	}
-}
-
-int main() {
-	char ch[] = "abcdef";
-	char ch2[] = "abcdef";
-	printf("%d\n", my_strcmp(ch, ch2));
-	return 0;
-}
+//int my_strcmp(const char* str1, const char* str2) {
+//	assert(str1 != NULL);
+//	assert(str2 != NULL);
+//	while (*str1 != '\0' && *str2 != '\0') {
+//		if (*str1 > *str2) {
+//			return 1;
+//		}
+//		else if (*str1 < *str2) {
+//			return -1;
+//		}
+//		else {
+//			str1++;
+//			str2++;
+//		}
+//	}
+//	if (*str1 > *str2) {
+//		return 1;
+//	} 
+//	else if (*str1 < *str2) {
+//		return -1;
+//	}
+//	else {
+//		return 0;
+//	}
+//}
+//
+//int main() {
+//	char ch[] = "abcdef";
+//	char ch2[] = "abcdef";
+//	printf("%d\n", my_strcmp(ch, ch2));
+//	return 0;
+//}

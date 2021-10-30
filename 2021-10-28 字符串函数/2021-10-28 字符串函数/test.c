@@ -5,7 +5,7 @@
 //char* myStrcat(char* dest, const char* src) {
 //	// dest要足够大
 //	assert(dest != NULL);
-//	assert(src != NULL);
+//	assert(src != NULL);    //加断言检验指针的有效性
 //	int i = 0;
 //	while (dest[i] != '\0') {
 //		i++;
@@ -95,7 +95,8 @@
 //int main() {
 //	char arr1[] = "abcdefg";
 //	char arr2[] = "de";
-//	printf("%s\n", myStrstr(arr1, arr2));
+//	printf("%p\n", arr1);
+//	printf("%p\n", myStrstr(arr1, arr2));
 //	return 0;
 //}
 
@@ -114,21 +115,21 @@
 // memory系列函数
 
 //memcpy
-void* myMemcpy(void* dest, const void* src, size_t num) {
-	assert(dest != NULL);
-	assert(src != NULL);
-	assert(num != 0);
-	char* pdest = (char*)dest;
-	char* psrc = (char*)src;
-	for (size_t i = 0; i < num; i++) {
-		pdest[i] = psrc[i];
-	}
-	return dest;
-}
-int main() {
-	char arr1[10] = "abcdefg";
-	char arr2[10] = "de";
-	myMemcpy(arr1, arr2, sizeof(arr2));
-	printf("%s\n", arr1);
-	return 0;
-}
+//void* myMemcpy(void* dest, const void* src, size_t num) {
+//	assert(dest != NULL);
+//	assert(src != NULL);
+//	assert(num != 0);
+//	char* pdest = (char*)dest;
+//	char* psrc = (char*)src;
+//	for (size_t i = 0; i < num; i++) {
+//		pdest[i] = psrc[i];
+//	}
+//	return dest;
+//}
+//int main() {
+//	char arr1[10] = "abcdefg";
+//	char arr2[10] = "de";
+//	myMemcpy(arr1, arr2, sizeof(arr2));
+//	printf("%s\n", arr1);
+//	return 0;
+//}
