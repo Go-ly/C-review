@@ -1,6 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include <stdio.h>
 #include <assert.h>
+#include <string.h>
 //size_t my_strlen(const char* arr) {
 //	assert(arr != NULL);
 //	int i = 0;
@@ -45,39 +46,39 @@
 
 //void* memmove(void* dest, const void* src, size_t count);
 
-void* my_memmove(void* dest, const void* src, size_t count) {
-	assert(dest != NULL);
-	assert(src != NULL);
-	assert(count != 0);
-	char* pdest = (char*)dest;
-	char* psrc = (char*)src;
-	if (pdest > psrc && pdest < psrc + count)
-	{
-		// 内存重叠
-		while (count > 0) {
-			pdest[count] = psrc[count];
-			count--;
-		}
-	}
-	else {
-		// 未重叠
-		int i = 0;
-		while (count > 0) {
-			pdest[i] = psrc[i];
-			count--;
-			i++;
-		}
-	}
-	return dest;
-}
-
-int main() {
-	char arr[100] = "abc";
-	char arr2[100] = "hello";
-	my_memmove(arr, arr2, 6);
-	printf("%s\n", arr);
-	return 0;
-}
+//void* my_memmove(void* dest, const void* src, size_t count) {
+//	assert(dest != NULL);
+//	assert(src != NULL);
+//	assert(count != 0);
+//	char* pdest = (char*)dest;
+//	char* psrc = (char*)src;
+//	if (pdest > psrc && pdest < psrc + count)
+//	{
+//		// 内存重叠
+//		while (count > 0) {
+//			pdest[count] = psrc[count];
+//			count--;
+//		}
+//	}
+//	else {
+//		// 未重叠
+//		int i = 0;
+//		while (count > 0) {
+//			pdest[i] = psrc[i];
+//			count--;
+//			i++;
+//		}
+//	}
+//	return dest;
+//}
+//
+//int main() {
+//	char arr[100] = "abc";
+//	char arr2[100] = "hello";
+//	my_memmove(arr, arr2, 6);
+//	printf("%s\n", arr);
+//	return 0;
+//}
 
 
 //模拟实现memcpy
@@ -196,3 +197,44 @@ int main() {
 //	printf("%d\n", my_strcmp(ch, ch2));
 //	return 0;
 //}
+
+//模拟实现strncat
+
+//char* my_strcat(char* dest, char* src, size_t num) {
+//	assert(dest != NULL);
+//	assert(src != NULL);
+//	assert(num != 0);
+//	char* pdest = dest;
+//	while (*dest != '\0') {
+//		dest++;          // 找'\0'
+//	}
+//	for (size_t i = 0; i < num; i++) {
+//		*dest = *src;
+//		dest++;
+//		src++;
+//	}
+//	*dest = '\0';
+//	return pdest;
+//}
+
+
+//模拟实现strncpy
+
+char* my_strncpy(char* dest, const char* src, size_t num) {
+	assert(dest != NULL);
+	assert(src != NULL);
+	assert(num != 0 && num <= strlen(src));
+	//dest指向的空间要足够大
+	for (size_t i = 0; i < num; i++) {
+		dest[i] = src[i];
+	}
+	dest[num] = '\0';
+	return dest;
+}
+
+int main() {
+	char ch[20] = "abcde";
+	char ch2[] = "hello";
+	my_strncpy(ch, ch2, 3);
+	printf("%s\n", ch);
+}

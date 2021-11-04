@@ -1,6 +1,8 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 
 #include <stdio.h> 
+#include <assert.h>
+#include <stdlib.h>
 //int main() {
 //	FILE* fp = fopen("e:/test.txt", "r");
 //	if (fp == NULL) {
@@ -90,7 +92,48 @@
 //	return 0;
 //}
 
+//int main() {
+//	const char ch[] = "12";
+//	const char ch2[] = "20";
+//	int ret = atoi(ch) + atoi(ch2);
+//	printf("%d\n", ret);
+//	return 0;
+//}
+
+//Ä£ÄâÊµÏÖatoi
+
+int my_atoi(const char* ch) {
+	assert(ch != NULL);
+	int flag = 0;
+	int tmp = 0;
+	if (*ch == ' ') {
+		ch++;
+	}
+	if (*ch == '+') {
+		flag = 0;
+		ch++;
+	}
+	if (*ch == '-') {
+		flag = 1;
+		ch++;
+	}
+	if (*ch >= 48 && *ch <= 57) {
+		while (*ch >= 48 && *ch <= 57 && *ch != '\0') {
+			tmp = tmp * 10 + (*ch - '0');
+			ch++;
+		}
+	}
+	else {
+		return 0;
+	}
+	if (flag == 1) {
+		return -tmp;
+	}
+	return tmp;
+}
+
 int main() {
-	FILE* fp = fopen("e:/test.c", "w");
+	char ch[] = "-2";
+	printf("%d\n", my_atoi(ch));
 	return 0;
 }
