@@ -99,7 +99,7 @@ int KMP(char* str, char* sub, int pos) {
 
 int main() {
 	char arr[] = "abcdef";
-	char arr1[] = "def";
+	char arr1[] = "defg";
 	printf("%d\n", KMP(arr, arr1, 0));
 	return 0;
 }
